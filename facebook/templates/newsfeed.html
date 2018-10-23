@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>뉴스피드</title>
+</head>
+
+<body>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #d7d8dc; }
+        .header {
+            background-color: #475d9f;
+            color: #fff;
+            height: 42px;
+            border-bottom: 1px solid #2c3863;
+        }
+        .btn1 {
+            position: absolute;
+            left: 0px;
+        }
+        .search {
+            position: absolute;
+            left: 50px;
+            right: 50px;
+        }
+        .searchbar {
+            border: 1px solid #2c3863;
+            background-color: #323f6b;
+            width: 100%;
+            border-radius: 4px;
+            padding: 6px; margin-top: 7px;
+            color:#ffffff;
+        }
+        .btn2 {
+            position: absolute;
+            right: 0px;
+        }
+        .container {
+            background-color: #d7d8dc;
+        }
+        .footer {
+            border-top: 1px solid #cccccc;
+            background-color: #fafafa;
+            height: 50px;
+            text-align: center;
+            position:fixed; bottom: 0; left: 0; right: 0;
+        }
+        .tab1 {
+            float: left;
+            width: 25%;
+        }
+        .tab2 {
+            float: left;
+            width: 25%;
+        }
+        .tab3 {
+            float: left;
+            width: 25%;
+        }
+        .tab4 {
+            float: left;
+            width: 25%;
+        }
+        .feed {
+            background-color: #ffffff;
+            border-top: 1px solid #c0c0c0;
+            border-bottom: 1px solid #c0c0c0;
+            margin: 7px 0;
+            padding: 12px;
+        }
+        .date {
+            color: #999;
+            margin-bottom: 10px;
+        }
+        .title {
+            color: #6184dd;
+            font-weight: 600;
+        }
+        .content {
+            margin-top: 5px;
+        }
+        .accessory {
+            border-top: 1px solid #eee;
+            padding-top:10px;
+            margin-top:10px;
+            color: #999;
+            font-size: 14px;
+        }
+    </style>
+    <div class="header">
+        <div class="btn1"><a href="/new"><img src="/static/ic_pencil.jpg" width="22px" style="margin:9px 0 0 13px"></a></div>
+        <div class="search">
+            <input type="text" class="searchbar" placeholder="Search">
+        </div>
+        <div class="btn2"><img src="/static/ic_info.jpg" width="22px" style="margin:9px 13px 0 0"></div>
+    </div>
+    <div class="container">
+        {% for feed in articles %}
+        <div class="feed">
+            <h3 class="name">{{ feed.author }}</h3>
+            <div class="date">{{ feed.created_at }}</div>
+            <a href="/feed/{{ feed.pk }}" class="title">{{ feed.title }}</a>
+            <p class="content">{{ feed.text }}</p>
+            <div class="accessory">
+                <img src="/static/ic_like.jpg" width="16px"> Like <img src="/static/ic_comment.jpg" width="16px"> Comments
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="footer">
+        <div class="tab1"><img src="/static/ic_feed.jpg" width="22px" style="margin-top: 15px"> </div>
+        <div class="tab2"><img src="/static/ic_person.jpg" width="20px" style="margin-top: 14px"></div>
+        <div class="tab3"><img src="/static/ic_globe.jpg" width="20px" style="margin-top: 14px"> </div>
+        <div class="tab4"><img src="/static/ic_etc.jpg" width="20px" style="margin-top: 14px"></div>
+    </div>
+</body>
+
+</html>
