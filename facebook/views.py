@@ -77,7 +77,7 @@ def detail_feed(request, pk):
 
 def new_feed(request):
     if request.method == 'POST' : #폼이 전송되었을 때만 아래 코드를 실행
-        new_article = Article.objects.creat(
+        new_article = Article.objects.create(
             author = request.POST['author'],
             title =  request.POST['title'],
             text = request.POST['content'],
